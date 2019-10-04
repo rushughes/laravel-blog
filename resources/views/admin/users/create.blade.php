@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,7 +9,7 @@
                 <div class="card-header">{{ __('Create User') }}</div>
 
                 <div class="card-body">
-                  {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store']) !!}
+                  {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=>'true']) !!}
 
                     <div class="form-group">
                       {!! Form::label('name', 'Name') !!}
@@ -31,6 +32,11 @@
                     </div>
 
                     <div class="form-group">
+                      {!! Form::label('file', 'Title') !!}
+                      {!! Form::file('file', null, ['class'=>'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
                       {!! Form::label('password', 'Password') !!}
                       {!! Form::password('password', ['class' => 'form-control']); !!}
                     </div>
@@ -44,7 +50,7 @@
                     {!! Form::close() !!}
 
                     @include('layouts.errors')
-                    
+
                 </div>
             </div>
         </div>
