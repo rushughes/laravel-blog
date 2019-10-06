@@ -118,9 +118,33 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        if (User::findOrFail($id)->delete()) {
-          Session::flash('message', 'User was successfully deleted!');
+        $user = User::findOrFail($id);
+        $photo = $user->photo;
+
+        if ($photo) {
+          if (unlink(public_path() . $user->photo->file)) {
+            if ($photo->delete()) {
+              if ($user->delete()) {
+                Session::flash('message', 'User was successfully deleted!');
+              } else {
+                Session::flash('message', 'User was not deleted!');
+              }
+            } else {
+              Session::flash('message', 'Unable to delete user photo!');
+            }
+          } else {
+            Session::flash('message', 'Unable to delete user photo file!');
+          }
+        } else {
+          if ($user->delete()) {
+            Session::flash('message', 'User was successfully deleted!');
+          } else {
+            Session::flash('message', 'User was not deleted!');
+          }
         }
+
+
+
         return redirect()->route('users.index');
     }
 }
