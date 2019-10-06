@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersUpdateRequest;
 use App\Http\Requests\UsersRequest;
 use App\Photo;
 use App\Role;
@@ -51,7 +52,7 @@ class AdminUsersController extends Controller
         }
 
         User::create($input);
-        return redirect('/admin/users');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -85,9 +86,26 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersUpdateRequest $request, $id)
     {
-        //
+        $user = User::FindOrFail($id);
+
+        if ($request->get('password') == '') {
+          $input = $request->except('password');
+        } else {
+          $input = $request->all();
+        }
+
+        if ($file = $request->file('photo_id')) {
+          $name = time() . '-' . $file->getClientOriginalName();
+          $path = $file->move('images', $name);
+          $photo = Photo::create(['file' => $name]);
+          $input['photo_id'] = $photo->id;
+        }
+
+        $user->update($input);
+
+        return redirect()->route('users.index');
     }
 
     /**

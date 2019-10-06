@@ -9,8 +9,8 @@
                 <div class="card-header">{{ __('Edit User') }}</div>
 
                 <div class="card-body">
-                  {!! Form::model($user, ['method'=>'POST',
-                    'action'=>['AdminUsersController@store',$user->id],
+                  {!! Form::model($user, ['method'=>'PUT',
+                    'action'=>['AdminUsersController@update',$user->id],
                     'files'=>'true']) !!}
 
                     <div class="form-group">
