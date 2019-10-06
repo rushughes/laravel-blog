@@ -68,6 +68,12 @@
                                         <a class="dropdown-item" href="{{ route('posts.create') }}">
                                             {{ __('Create Post') }}
                                         </a>
+                                        <a class="dropdown-item" href="{{ route('categories.index') }}">
+                                            {{ __('All Categories') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('categories.create') }}">
+                                            {{ __('Create Category') }}
+                                        </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
