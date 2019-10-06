@@ -9,26 +9,21 @@
                 <div class="card-header">{{ __('Create Post') }}</div>
 
                 <div class="card-body">
-                  {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=>'true']) !!}
+                  {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>'true']) !!}
 
                     <div class="form-group">
-                      {!! Form::label('name', 'Name') !!}
-                      {!! Form::text('name', null, ['class'=>'form-control']) !!}
+                      {!! Form::label('title', 'Title') !!}
+                      {!! Form::text('title', null, ['class'=>'form-control']) !!}
                     </div>
 
                     <div class="form-group">
-                      {!! Form::label('email', 'Email') !!}
-                      {!! Form::text('email', null, ['class'=>'form-control']) !!}
+                      {!! Form::label('body', 'Body') !!}
+                      {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
                     </div>
 
                     <div class="form-group">
-                      {!! Form::label('is_active', 'Active') !!}
-                      {!! Form::select('is_active', ['1' => 'Enabled', '0' => 'Disabled'], 'Enabled', ['class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                      {!! Form::label('role_id', 'Role') !!}
-                      {!! Form::select('role_id', $roles, '2', ['class' => 'form-control']) !!}
+                      {!! Form::label('category_id', 'Category') !!}
+                      {!! Form::select('category_id', ['0' => 'Potato', '1' => 'Turnip'], 'Potato', ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
@@ -37,12 +32,7 @@
                     </div>
 
                     <div class="form-group">
-                      {!! Form::label('password', 'Password') !!}
-                      {!! Form::password('password', ['class' => 'form-control']); !!}
-                    </div>
-
-                    <div class="form-group">
-                      {!! Form::submit('Create User', ['class'=>'btn btn-primary']) !!}
+                      {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
                     </div>
 
                     {!! Form::close() !!}
