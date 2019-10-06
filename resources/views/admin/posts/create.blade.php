@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                       {!! Form::label('category_id', 'Category') !!}
-                      {!! Form::select('category_id', ['0' => 'Potato', '1' => 'Turnip'], 'Potato', ['class' => 'form-control']) !!}
+                      {!! Form::select('category_id', $categories, '0', ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
