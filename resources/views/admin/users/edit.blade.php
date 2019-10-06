@@ -25,12 +25,12 @@
 
                     <div class="form-group">
                       {!! Form::label('is_active', 'Active') !!}
-                      {!! Form::select('is_active', ['1' => 'Enabled', '0' => 'Disabled'], 'Enabled', ['class' => 'form-control']) !!}
+                      {!! Form::select('is_active', ['1' => 'Enabled', '0' => 'Disabled'], $user->is_active, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                       {!! Form::label('role_id', 'Role') !!}
-                      {!! Form::select('role_id', $roles, '2', ['class' => 'form-control']) !!}
+                      {!! Form::select('role_id', $roles, $user->role_id, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
