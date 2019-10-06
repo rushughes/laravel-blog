@@ -55,12 +55,18 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->role_id == 1)
+                                    @if(Auth::user()->role_id == 1 && Auth::user()->is_active)
                                         <a class="dropdown-item" href="{{ route('users.index') }}">
                                             {{ __('All Users') }}
                                         </a>
                                         <a class="dropdown-item" href="{{ route('users.create') }}">
                                             {{ __('Create User') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('posts.index') }}">
+                                            {{ __('All Posts') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('posts.create') }}">
+                                            {{ __('Create Post') }}
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
