@@ -37,6 +37,37 @@
                             <td>{{$comment->body}}</td>
                             <td>{{$comment->created_at->diffForHumans()}}</td>
                             <td>{{$comment->updated_at->diffForHumans()}}</td>
+                            <td>
+                              @if($comment->is_active == 1)
+                                {!! Form::open(['method'=>'PUT',
+                                  'action'=>['PostCommentsController@update', $comment->id]]) !!}
+                                  {!! Form::hidden('is_active', '0') !!}
+                                  <div class="form-group">
+                                    {!! Form::submit('Unapprove', ['class'=>'btn btn-primary']) !!}
+                                  </div>
+                                {!! Form::close() !!}
+
+                                @else
+
+                                {!! Form::open(['method'=>'PUT',
+                                  'action'=>['PostCommentsController@update', $comment->id]]) !!}
+
+                                  {!! Form::hidden('is_active', '1') !!}
+
+                                  <div class="form-group">
+                                    {!! Form::submit('Approve', ['class'=>'btn btn-primary']) !!}
+                                  </div>
+
+                                {!! Form::close() !!}
+                              @endif
+                              {!! Form::open(['method'=>'DELETE',
+                                'action'=>['PostCommentsController@update', $comment->id]]) !!}
+                                <div class="form-group">
+                                  {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                                </div>
+
+                              {!! Form::close() !!}
+                            </td>
                           </tr>
                         @endforeach
                       @endif
