@@ -39,6 +39,27 @@
                     </tbody>
                   </table>
                 </div>
+                <div class="card-header">{{ __('Leave a comment') }}</div>
+
+                <div class="card-body">
+                  {!! Form::open(['method'=>'POST', 'action'=>'PostCommentsController@store']) !!}
+
+                    {!! Form::hidden('post_id', $post->id) !!}
+
+                    <div class="form-group">
+                      {!! Form::label('body', 'Body') !!}
+                      {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
+                      {!! Form::submit('Create Comment', ['class'=>'btn btn-primary']) !!}
+                    </div>
+
+                    {!! Form::close() !!}
+
+                    @include('layouts.errors')
+
+                </div>
             </div>
         </div>
     </div>

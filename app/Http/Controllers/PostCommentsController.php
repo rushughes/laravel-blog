@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class PostCommentsController extends Controller
 {
@@ -34,7 +39,25 @@ class PostCommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $user = Auth::user();
+
+        if ($user->photo) {
+          $photo = $user->photo->file;
+        } else {
+          $photo = '';
+        }
+
+        $data = [
+          'post_id' => $request->post_id,
+          'author' => $user->name,
+          'email' => $user->email,
+          'photo' => $photo,
+          'body' => $request->body,
+        ];
+        Comment::create($data);
+        Session::flash('message', 'Comment saved!');
+        return redirect()->back();
     }
 
     /**
