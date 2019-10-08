@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -77,7 +78,7 @@
                                         <a class="dropdown-item" href="{{ route('media.index') }}">
                                             {{ __('All Media') }}
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('media.upload') }}">
+                                        <a class="dropdown-item" href="{{ route('media.create') }}">
                                             {{ __('Upload Media') }}
                                         </a>
                                     @endif
@@ -105,5 +106,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>
