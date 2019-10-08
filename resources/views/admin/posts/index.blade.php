@@ -8,6 +8,9 @@
                 <div class="card-header">Admin Posts</div>
 
                 <div class="card-body">
+                  <div class="row">
+                    {{$posts->render()}}
+                </div>
                   <table class="table">
                     <thead>
                       <tr>
@@ -42,6 +45,9 @@
                       @endif
                     </tbody>
                   </table>
+
+                  <div class="row">
+                    {{$posts->render()}}
                 </div>
             </div>
         </div>
