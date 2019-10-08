@@ -123,6 +123,32 @@
                               {!! Form::close() !!}
                             </td>
                           </tr>
+                          <tr>
+                            <td colspan="10">
+                              @foreach($comment->replies as $reply)
+                                {{$reply->author}}: {{$reply->body}}</p>
+                              @endforeach
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="10">
+                              {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply']) !!}
+
+                                {!! Form::hidden('comment_id', $comment->id) !!}
+
+                                <div class="form-group">
+                                  {!! Form::label('body', 'Body') !!}
+                                  {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+                                </div>
+
+                                <div class="form-group">
+                                  {!! Form::submit('Reply to comment', ['class'=>'btn btn-primary']) !!}
+                                </div>
+
+                                {!! Form::close() !!}
+
+                                @include('layouts.errors')
+                            </td>
                         @endforeach
                       </tbody>
                     </table>

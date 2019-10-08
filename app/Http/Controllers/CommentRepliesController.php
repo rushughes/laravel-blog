@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+use App\CommentReply;
+use App\Post;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CommentRepliesController extends Controller
 {
@@ -35,6 +41,28 @@ class CommentRepliesController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function createReply(Request $request) {
+      $user = Auth::user();
+
+      if ($user->photo) {
+        $photo = $user->photo->file;
+      } else {
+        $photo = '';
+      }
+
+      $data = [
+        'comment_id' => $request->comment_id,
+        'author' => $user->name,
+        'email' => $user->email,
+        'photo' => $photo,
+        'body' => $request->body,
+      ];
+      
+      CommentReply::create($data);
+      Session::flash('message', 'Reply saved!');
+      return redirect()->back();
     }
 
     /**
