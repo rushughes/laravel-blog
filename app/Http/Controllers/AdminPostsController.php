@@ -139,9 +139,11 @@ class AdminPostsController extends Controller
           Session::flash('message', 'Post was not deleted!');
         }
       }
-
-
-
       return redirect()->route('posts.index');
+    }
+
+    public function post($id) {
+      $post = Post::findOrFail($id);
+      return view('post', compact('post'));
     }
 }

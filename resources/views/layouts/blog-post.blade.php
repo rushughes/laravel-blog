@@ -56,33 +56,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->role_id == 1 && Auth::user()->is_active)
-                                        <a class="dropdown-item" href="{{ route('users.index') }}">
-                                            {{ __('All Users') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('users.create') }}">
-                                            {{ __('Create User') }}
-                                        </a>
+                                    @if(Auth::user()->role_id && Auth::user()->is_active)
                                         <a class="dropdown-item" href="{{ route('posts.index') }}">
                                             {{ __('All Posts') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('posts.create') }}">
-                                            {{ __('Create Post') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('comments.index') }}">
-                                            {{ __('All Comments') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('categories.index') }}">
-                                            {{ __('All Categories') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('categories.create') }}">
-                                            {{ __('Create Category') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('media.index') }}">
-                                            {{ __('All Media') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('media.create') }}">
-                                            {{ __('Upload Media') }}
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
