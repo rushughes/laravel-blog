@@ -74,6 +74,12 @@
                                         <a class="dropdown-item" href="{{ route('categories.create') }}">
                                             {{ __('Create Category') }}
                                         </a>
+                                        <a class="dropdown-item" href="{{ route('media.index') }}">
+                                            {{ __('All Media') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('media.upload') }}">
+                                            {{ __('Upload Media') }}
+                                        </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
