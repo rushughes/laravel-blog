@@ -17,6 +17,7 @@
                         <th scope="col">Photo</th>
                         <th scope="col">Title</th>
                         <th scope="col">Body</th>
+                        <th scope="col">Comments</th>
                         <th scope="col">Created</th>
                         <th scope="col">Updated</th>
                       </tr>
@@ -25,7 +26,7 @@
                       @if($posts)
                         @foreach($posts as $post)
                           <tr>
-                            <td>{{$post->id}}</td>
+                            <td><a href="{{route('home.post', $post->id)}}">{{$post->id}}</td>
                             <td>{{$post->user->name}}</td>
                             <td>{{$post->category->name}}</td>
                             <td>
@@ -33,6 +34,7 @@
                             </td>
                             <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                             <td>{{$post->body}}</td>
+                            <td><a href="{{route('comments.show', $post->id)}}">Comments</a></td>
                             <td>{{$post->created_at->diffForHumans()}}</td>
                             <td>{{$post->updated_at->diffForHumans()}}</td>
                           </tr>
