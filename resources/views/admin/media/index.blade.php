@@ -15,6 +15,7 @@
                         <th scope="col">Image</th>
                         <th scope="col">Created At</th>
                         <th scope="col">Updated At</th>
+                        <th scope="col">Options</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,15 @@
                             </td>
                             <td>{{$photo->created_at->diffForHumans()}}</td>
                             <td>{{$photo->updated_at->diffForHumans()}}</td>
+                            <td>
+                              {!! Form::open(['method'=>'DELETE', 'action'=>['AdminMediaController@destroy', $photo->id]]) !!}
+
+                                <div class="form-group">
+                                  {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                                </div>
+
+                                {!! Form::close() !!}
+                              </td>
                           </tr>
                         @endforeach
                       @endif
