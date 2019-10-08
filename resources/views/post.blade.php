@@ -31,7 +31,7 @@
                               <img height="50" width="50" src="{{ $post->photo ? $post->photo->file : 'https://via.placeholder.com/50'}}" />
                             </td>
                             <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
-                            <td>{{$post->body}}</td>
+                            <td>{!! $post->body !!}</td>
                             <td>{{$post->created_at->diffForHumans()}}</td>
                             <td>{{$post->updated_at->diffForHumans()}}</td>
                           </tr>
