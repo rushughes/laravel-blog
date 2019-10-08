@@ -12,6 +12,7 @@
                     <thead>
                       <tr>
                         <th scope="col">id</th>
+                        <th scope="col">Grav</th>
                         <th scope="col">Photo</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
@@ -26,6 +27,9 @@
                       @foreach($users as $user)
                         <tr>
                           <td>{{$user->id}}</td>
+                          <td>
+                            <img height="50" width="50" src="{{ $user->gravatar }}" />
+                          </td>
                           <td>
                             <img height="50" width="50" src="{{ $user->photo ? $user->photo->file : 'https://via.placeholder.com/50'}}" />
                           </td>
