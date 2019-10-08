@@ -26,7 +26,7 @@
                       @if($posts)
                         @foreach($posts as $post)
                           <tr>
-                            <td><a href="{{route('home.post', $post->id)}}">{{$post->id}}</td>
+                            <td><a href="{{route('home.post', $post->slug)}}">{{$post->id}}</td>
                             <td>{{$post->user->name}}</td>
                             <td>{{$post->category->name}}</td>
                             <td>

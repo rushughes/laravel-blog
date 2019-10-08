@@ -7,6 +7,8 @@ use App\Category;
 use App\Photo;
 use App\Post;
 use App\User;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -142,8 +144,8 @@ class AdminPostsController extends Controller
       return redirect()->route('posts.index');
     }
 
-    public function post($id) {
-      $post = Post::findOrFail($id);
+    public function post($slug) {
+      $post = Post::findBySlugOrFail($slug);
       return view('post', compact('post'));
     }
 }

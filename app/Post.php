@@ -2,10 +2,15 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+  use Sluggable;
+  use SluggableScopeHelpers;
+
   protected $fillable = [
       'user_id', 'title', 'body', 'category_id', 'photo_id'
   ];
@@ -25,5 +30,20 @@ class Post extends Model
   public function comments() {
     return $this->hasMany('App\Comment');
   }
+
+  /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+                'onUpdate' => true,
+            ]
+        ];
+    }
 
 }
